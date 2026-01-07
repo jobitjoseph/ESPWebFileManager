@@ -8,11 +8,11 @@
  * Project Brief: ESPWebFileManager Library
  * Author: Jobit Joseph @ https://github.com/jobitjoseph
  * IDE: Arduino IDE 2.x.x
- * Arduino Core: ESP32 Arduino Core V 3.1.0
+ * Arduino Core: ESP32 Arduino Core V 3.3.5
  * GitHub: https://github.com/jobitjoseph/ESPWebFileManager
  * Dependencies : 
- *                Async TCP Library for ESP32 V 3.4.1 @ https://github.com/mathieucarbou/AsyncTCP
- *                ESPAsyncWebServer Library V 3.4.3 @ https://github.com/mathieucarbou/ESPAsyncWebServer
+ *                Async TCP Library for ESP32 V 3.4.10 @ https://github.com/ESP32Async/AsyncTCP
+ *                ESPAsyncWebServer Library V 3.9.4 @ https://github.com/ESP32Asyxnc/ESPAsyncWebServer
  * Copyright © Jobit Joseph
  * 
  * This code is licensed under the following conditions:

@@ -1,6 +1,6 @@
 {
   "name": "EspWebFileManager",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "author": "Jobit Joseph",
   "maintainer": "Jobit Joseph <jobitjoseph1@gmail.com>",
   "sentence": "A library to manage various file systems and provide file management over web interface for ESP32.",

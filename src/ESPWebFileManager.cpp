@@ -285,7 +285,7 @@ void ESPWebFileManager::setServer(AsyncWebServer * server) {
   _server = server;
 
   _server -> on("/file", HTTP_GET, [ & ](AsyncWebServerRequest * request) {
-    AsyncWebServerResponse * response = request -> beginResponse_P(200, "text/html", SecData, SecData_len);
+    AsyncWebServerResponse * response = request -> beginResponse(200, "text/html", SecData, SecData_len);
     response -> addHeader("Content-Encoding", "gzip");
     request -> send(response);
     // request->send(200, "text/html", html_page); 

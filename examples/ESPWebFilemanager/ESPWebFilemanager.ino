@@ -39,6 +39,7 @@
 
 #include <ESPWebFileManager.h>
 #include <ESPAsyncWebServer.h>
+#include <WiFi.h>
 
 /*ESPWebFileManager Constructor*/
 /*File System: FS_SPIFFS, FS_LITTLEFS, FS_FATFS, FS_SD, FS_SD_MMC(SD_MMC only supports ESP32 and ESP32-S3)

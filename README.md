@@ -20,7 +20,7 @@
 
 ## Chip Compatibility
 
-| Feature | ESP32 | ESP32-S3 | ESP32-C3 / C6 / S2 |
+| Feature | ESP32 | ESP32-S3 | ESP32-C3 / C5 / C6 |
 |---------|-------|----------|-------------------|
 | **SPIFFS / LittleFS / FATFS** | ✅ | ✅ | ✅ |
 | **SD (SPI Mode)** | ✅ | ✅ | ✅ |

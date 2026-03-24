@@ -1,6 +1,6 @@
 /* 
  * ESPWebFileManager Library
- * Copyright (C) 2024 Jobit Joseph
+ * Copyright (C) 2026 Jobit Joseph
  * Licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
  * You may not use this work for commercial purposes. Modifications must credit the original author.
  * See the LICENSE file for more details.
@@ -8,11 +8,11 @@
  * Project Brief: ESPWebFileManager Library
  * Author: Jobit Joseph @ https://github.com/jobitjoseph
  * IDE: Arduino IDE 2.x.x
- * Arduino Core: ESP32 Arduino Core V 3.3.5
+ * Arduino Core: ESP32 Arduino Core V 3.3.7
  * GitHub: https://github.com/jobitjoseph/ESPWebFileManager
  * Dependencies : 
  *                Async TCP Library for ESP32 V 3.4.10 @ https://github.com/ESP32Async/AsyncTCP
- *                ESPAsyncWebServer Library V 3.9.4 @ https://github.com/ESP32Asyxnc/ESPAsyncWebServer
+ *                ESPAsyncWebServer Library V 3.10.3 @ https://github.com/ESP32Asyxnc/ESPAsyncWebServer
  * Copyright © Jobit Joseph
  * 
  * This code is licensed under the following conditions:
@@ -37,7 +37,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  * Author: Jobit Joseph
- * Date: 03 January 2025
+ * Date: 24 March 2026
  *
  * For commercial use or licensing requests, please contact [jobitjoseph1@gmail.com].
  */
@@ -49,7 +49,9 @@
 #include <FFat.h>
 #include <SPI.h>
 #include <SD.h>
+#if SOC_SDMMC_HOST_SUPPORTED
 #include <SD_MMC.h>
+#endif
 
 // Unified constructor for all file systems
 ESPWebFileManager::ESPWebFileManager(int fsType, bool formatOnFailFlag)
@@ -84,6 +86,7 @@ ESPWebFileManager::ESPWebFileManager(int fsType, bool formatOnFailFlag, int line
       _clk(clk), _cmd(cmd), _d0(d0), _d1(d1), _d2(d2), _d3(d3) {}
 
 
+#if SOC_SDMMC_HOST_SUPPORTED
 bool ESPWebFileManager::initSD_MMC() {
     DEBUG_PRINTLN("Initializing SD_MMC...");
 
@@ -150,11 +153,17 @@ bool ESPWebFileManager::initSD_MMC() {
     current_fs = &SD_MMC;
     return true;
 }
+#endif
 
 bool ESPWebFileManager::begin() {
     switch (_fsType) {
         case FS_SD_MMC:
+#if SOC_SDMMC_HOST_SUPPORTED
             return initSD_MMC();
+#else
+            DEBUG_PRINTLN("SD_MMC is not supported on this platform.");
+            return false;
+#endif
         case FS_SPIFFS:
             return initFileSystem(SPIFFS, "SPIFFS", [] { return SPIFFS.begin(); }, [] { return SPIFFS.format(); });
         case FS_LITTLEFS:

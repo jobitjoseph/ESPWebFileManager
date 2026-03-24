@@ -18,6 +18,18 @@
 - **Folder Management:** You can create or delete folders on LittleFS, FAT FS or SD card. Folders are not supported on SPIFFS.
 - **Automatic file system formatting if mounting fails (Not available for SD card in SPI mode).#**
 
+## Chip Compatibility
+
+| Feature | ESP32 | ESP32-S3 | ESP32-C3 / C6 / S2 |
+|---------|-------|----------|-------------------|
+| **SPIFFS / LittleFS / FATFS** | ✅ | ✅ | ✅ |
+| **SD (SPI Mode)** | ✅ | ✅ | ✅ |
+| **SD_MMC (Hardware)** | ✅ | ✅ | ❌ (Not Supported) |
+
+> [!IMPORTANT]
+> **ESP32-C3 Users:** The ESP32-C3 does not have SDMMC hardware. You must use an SD card module in **SPI mode** with the `FS_SD` constructor. The `FS_SD_MMC` type will not compile or work on this chip.
+
+
 ## Installation
 
 ### Arduino IDE

@@ -1,6 +1,6 @@
 /* 
  * ESPWebFileManager Library
- * Copyright (C) 2024 Jobit Joseph
+ * Copyright (C) 2026 Jobit Joseph
  * Licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
  * You may not use this work for commercial purposes. Modifications must credit the original author.
  * See the LICENSE file for more details.
@@ -8,11 +8,11 @@
  * Project Brief: ESPWebFileManager Library
  * Author: Jobit Joseph @ https://github.com/jobitjoseph
  * IDE: Arduino IDE 2.x.x
- * Arduino Core: ESP32 Arduino Core V 3.3.5
+ * Arduino Core: ESP32 Arduino Core V 3.3.7
  * GitHub: https://github.com/jobitjoseph/ESPWebFileManager
  * Dependencies : 
  *                Async TCP Library for ESP32 V 3.4.10 @ https://github.com/ESP32Async/AsyncTCP
- *                ESPAsyncWebServer Library V 3.9.4 @ https://github.com/ESP32Asyxnc/ESPAsyncWebServer
+ *                ESPAsyncWebServer Library V 3.10.3 @ https://github.com/ESP32Asyxnc/ESPAsyncWebServer
  * Copyright © Jobit Joseph
  * 
  * This code is licensed under the following conditions:
@@ -37,7 +37,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  * Author: Jobit Joseph
- * Date: 03 January 2025
+ * Date: 24 March 2026
  *
  * For commercial use or licensing requests, please contact [jobitjoseph1@gmail.com].
  */
@@ -48,7 +48,9 @@
 #include <AsyncTCP.h>
 #include <ESPAsyncWebServer.h>
 #include <FS.h>
+#if SOC_SDMMC_HOST_SUPPORTED
 #include <SD_MMC.h>
+#endif
 
 // Define file system types
 #define FS_SPIFFS 1
@@ -102,7 +104,9 @@ private:
 
     bool initFileSystem(fs::FS &fs, const char *fsName, std::function<bool()> beginFn, std::function<bool()> formatFn);
     bool initSD();
+#if SOC_SDMMC_HOST_SUPPORTED
     bool initSD_MMC();
+#endif
 };
 
 
